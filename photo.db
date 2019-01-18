@@ -1,0 +1,24 @@
+<?php
+session_start();
+require("db.php");
+include 'imagesdisplayes.php';
+
+
+mysql_connect("localhost", "root", "") or die ("could not connect t the server");
+    mysql_select_db("users") or die("this database was not found");
+$result = mysql_query("SELECT *  FROM photos ORDER BY id DESC ")or die("If the photo do not uploadet please try again");;
+
+while($row = mysql_fetch_array($result))
+{
+echo '<div id="imagelist">';
+
+echo '<p id="caption">'.$row['caption'].' </p>';
+echo '<p><img src="'.$row['location'].'" width=500 height=500></p>';
+ 
+
+
+echo '</div>';
+
+
+}
+?>
